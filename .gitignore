@@ -9,3 +9,11 @@
 **/.project
 **/.classpath
 **/.factorypath
+/.idea/
+*.iml
+/infrastructure/launcher/target/
+/infrastructure/adapters-out/jpa-repository/target/
+/infrastructure/adapters-in/rest-api/target/
+/domain/target/
+/application/target/
+/.idea/
