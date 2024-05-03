@@ -1,0 +1,4 @@
+org\example\api\PriceQueriedResponse.class
+org\example\api\PriceRequest.class
+org\example\api\PriceAPI.class
+org\example\api\PriceCreatedResponse.class

@@ -1,0 +1,11 @@
+# Default ignored files
+.idea
+**/target
+/target/*
+*.class
+*.db
+**/.settings
+.project
+**/.project
+**/.classpath
+**/.factorypath

@@ -1,0 +1,7 @@
+org\example\ddbb\PriceCreatedDomainMapper.class
+org\example\ddbb\PriceDomainMapperImpl.class
+org\example\ddbb\PriceRepository.class
+org\example\ddbb\PriceEntity.class
+org\example\ddbb\PriceCreatedDomainMapperImpl.class
+org\example\ddbb\PriceDomainJpaAdapter.class
+org\example\ddbb\PriceDomainMapper.class

@@ -1,0 +1,4 @@
+org\example\domain\model\pricecreateddomain\PriceCreatedDomainPersistencePort.class
+org\example\domain\model\pricecreateddomain\PriceCreatedDomain.class
+org\example\domain\model\pricedomain\PriceDomain.class
+org\example\domain\model\pricedomain\PriceDomainPersistencePort.class
