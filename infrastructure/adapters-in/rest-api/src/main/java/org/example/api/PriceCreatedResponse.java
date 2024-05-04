@@ -23,6 +23,8 @@ public class PriceCreatedResponse {
 
     private String productId;
 
+    private String priority;
+
     private double price;
 
     private String curr;

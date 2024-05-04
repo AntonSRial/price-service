@@ -6,7 +6,7 @@ import org.example.domain.model.pricedomain.PriceDomainPersistencePort;
 
 public class CreatePriceCommandHandlerImpl implements CreatePriceCommandHandler {
 
-    private PriceDomainPersistencePort pricePersistencePort;
+    private final PriceDomainPersistencePort pricePersistencePort;
 
 
     public CreatePriceCommandHandlerImpl(PriceDomainPersistencePort outputPort) {
@@ -15,7 +15,7 @@ public class CreatePriceCommandHandlerImpl implements CreatePriceCommandHandler 
 
     @Override
     public void handle(CreatePriceCommand command) {
-        PriceDomain priceDomain = new PriceDomain(command.brandId(), command.startDate(), command.enDate(), command.priceList(), command.productId(), command.price(), command.curr());
+        PriceDomain priceDomain = new PriceDomain(command.brandId(), command.startDate(), command.enDate(), command.priceList(), command.productId(), command.priority(), command.price(), command.curr());
         pricePersistencePort.save(priceDomain);
     }
 

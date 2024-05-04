@@ -22,8 +22,9 @@ public class PriceDomainJpaAdapter implements PriceDomainPersistencePort, PriceC
     }
 
     @Override
-    public List<PriceCreatedDomain> find(String productId, String brandId  ) {
+    public List<PriceCreatedDomain> find(String productId, String brandId) {
         List<PriceEntity> priceEntityList = priceRepository.findAll();
         return PriceCreatedDomainMapper.INSTANCE.priceEntityListToQueryPriceDomainList(priceEntityList);
     }
+
 }

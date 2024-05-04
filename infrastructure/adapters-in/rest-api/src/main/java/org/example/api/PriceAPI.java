@@ -43,7 +43,7 @@ public class PriceAPI {
         FindPriceCreatedQuery query = new FindPriceCreatedQuery(productId, brandId);
 
         return ResponseEntity.ok(findPriceCreatedQueryHandler.handle(query).foundPriceCreatedList().stream()
-                .map(item -> new FoundPriceCreated(item.brandId(), item.startDate(), item.enDate(), item.priceList(), item.productId(), item.price(), item.curr()))
+                .map(item -> new FoundPriceCreated(item.brandId(), item.startDate(), item.enDate(), item.priceList(), item.productId(), item.priority(), item.price(), item.curr()))
                 .collect(Collectors.toList()));
     }
 

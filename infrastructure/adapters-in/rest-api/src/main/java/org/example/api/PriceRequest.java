@@ -17,6 +17,8 @@ public class PriceRequest {
 
     private String productId;
 
+    private String priority;
+
     private double price;
 
     private String curr;
