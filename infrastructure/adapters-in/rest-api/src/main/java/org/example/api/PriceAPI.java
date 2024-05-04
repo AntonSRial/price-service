@@ -20,22 +20,20 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("${api.version}/price")
 public class PriceAPI {
-    /*@Autowired
-    CreatePriceCommandHandler createPriceCommandHandler;*/
+    @Autowired
+    CreatePriceCommandHandler createPriceCommandHandler;
     @Autowired
     FindPriceCreatedQueryHandler findPriceCreatedQueryHandler;
 
-/*
     @PostMapping(path = "",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    ResponseEntity<PriceCreatedResponse> greetingPrice(@RequestBody PriceRequest price) {
-        CreatePriceCommand createPriceCommand = new CreatePriceCommand(price.getBrandId(), price.getStartDate(), price.getEnDate(), price.getPriceList(), price.getProductId(), price.getPrice(), price.getCurr());
+    ResponseEntity<PriceCreatedResponse> create(@RequestBody PriceRequest price) {
+        CreatePriceCommand createPriceCommand = new CreatePriceCommand(price.getBrandId(), price.getStartDate(), price.getEnDate(), price.getPriceList(), price.getProductId(), price.getPriority(), price.getPrice(), price.getCurr());
 
         createPriceCommandHandler.handle(createPriceCommand);
-        return ResponseEntity.ok(new PriceCreatedResponse(price.getBrandId(), price.getStartDate(), price.getEnDate(), price.getPriceList(), price.getProductId(), price.getPrice(), price.getCurr()));
+        return ResponseEntity.ok(new PriceCreatedResponse(price.getBrandId(), price.getStartDate(), price.getEnDate(), price.getPriceList(), price.getProductId(), price.getPriority(), price.getPrice(), price.getCurr()));
     }
-*/
 
     @GetMapping("")
     ResponseEntity<List<FoundPriceCreated>> list(String productId, String brandId) {
