@@ -7,6 +7,7 @@ import org.example.domain.model.pricedomain.PriceDomainPersistencePort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -22,8 +23,8 @@ public class PriceDomainJpaAdapter implements PriceDomainPersistencePort, PriceC
     }
 
     @Override
-    public List<PriceCreatedDomain> find(String productId, String brandId) {
-        List<PriceEntity> priceEntityList = priceRepository.findAll();
+    public List<PriceCreatedDomain> find(String productId, String brandId, Date applicationDate) {
+        List<PriceEntity> priceEntityList = priceRepository.findApplicablePrices(productId, brandId, applicationDate);
         return PriceCreatedDomainMapper.INSTANCE.priceEntityListToQueryPriceDomainList(priceEntityList);
     }
 

@@ -6,14 +6,17 @@ import org.example.application.usecase.findpricecreated.FindPriceCreatedQuery;
 import org.example.application.usecase.findpricecreated.FindPriceCreatedQueryHandler;
 import org.example.application.usecase.findpricecreated.FoundPriceCreated;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,13 +39,14 @@ public class PriceAPI {
     }
 
     @GetMapping("")
-    ResponseEntity<List<FoundPriceCreated>> list(String productId, String brandId) {
+    ResponseEntity<List<FoundPriceCreated>> list(String productId, String brandId, @RequestParam(name = "applicationDate", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") Date applicationDate) {
 
-        FindPriceCreatedQuery query = new FindPriceCreatedQuery(productId, brandId);
+        FindPriceCreatedQuery query = new FindPriceCreatedQuery(productId, brandId, applicationDate);
 
         return ResponseEntity.ok(findPriceCreatedQueryHandler.handle(query).foundPriceCreatedList().stream()
-                .map(item -> new FoundPriceCreated(item.brandId(), item.startDate(), item.enDate(), item.priceList(), item.productId(), item.priority(), item.price(), item.curr()))
+                .map(item -> new FoundPriceCreated(item.brandId(), item.startDate(), item.enDate(), item.priceList(), item.productId(), item.price()))
                 .collect(Collectors.toList()));
     }
+
 
 }
