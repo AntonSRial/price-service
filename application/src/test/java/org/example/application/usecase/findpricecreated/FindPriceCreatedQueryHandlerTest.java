@@ -42,7 +42,10 @@ public class FindPriceCreatedQueryHandlerTest {
 
         // Assert
         assertEquals(2, foundPriceList.foundPriceCreatedList().size());
+        assertEquals("priceList1", foundPriceList.foundPriceCreatedList().get(0).priceList());
         assertEquals("priceList2", foundPriceList.foundPriceCreatedList().get(1).priceList());
+        assertEquals(25, foundPriceList.foundPriceCreatedList().get(1).price());
+
     }
 
     @Test

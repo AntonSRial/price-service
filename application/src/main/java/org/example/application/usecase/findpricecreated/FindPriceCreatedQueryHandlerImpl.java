@@ -20,6 +20,9 @@ public class FindPriceCreatedQueryHandlerImpl implements FindPriceCreatedQueryHa
         List<FoundPriceCreated> result  =  priceCreatedDomainPersistencePort.find(query.productId(), query.brandId(), query.applicationDate()).parallelStream().map(item -> new FoundPriceCreated(
                 item.getBrandId(), item.getStartDate(), item.getEnDate(), item.getPriceList(), item.getProductId(), item.getPriority(), item.getPrice(), item.getCurr())).toList();
 
+        if(query.applicationDate() == null) {
+            return new FoundPriceList(result);
+        }
         List<FoundPriceCreated> filteredList = result.stream()
                 .filter(item -> result.stream()
                         .filter(otherItem -> Objects.equals(item.productId(), otherItem.productId()))
