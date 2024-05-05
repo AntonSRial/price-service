@@ -44,7 +44,7 @@ public class PriceEntity implements Serializable {
     private String productId;
 
     @Column(name="PRIORITY")
-    private String priority;
+    private int priority;
 
     @Column(name="PRICE")
     private double price;

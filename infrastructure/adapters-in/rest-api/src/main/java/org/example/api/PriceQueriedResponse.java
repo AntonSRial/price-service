@@ -1,50 +1,26 @@
 package org.example.api;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.Date;
-
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class PriceQueriedResponse {
-    private Long id;
-    private String name;
-    private Integer age;
-    private Date greetingDate;
+    private String brandId;
 
-    public PriceQueriedResponse(Long id, String name, Integer age, Date greetingDate) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.greetingDate = greetingDate;
-    }
+    private Date startDate;
 
-    public Long getId() {
-        return id;
-    }
+    private Date enDate;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private String priceList;
 
-    public String getName() {
-        return name;
-    }
+    private String productId;
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public Date getGreetingDate() {
-        return greetingDate;
-    }
-
-    public void setGreetingDate(Date greetingDate) {
-        this.greetingDate = greetingDate;
-    }
+    private String price;
 
 }

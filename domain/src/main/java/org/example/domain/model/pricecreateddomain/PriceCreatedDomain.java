@@ -22,7 +22,7 @@ public class PriceCreatedDomain {
 
     private String productId;
 
-    private String priority;
+    private int priority;
 
     private double price;
 

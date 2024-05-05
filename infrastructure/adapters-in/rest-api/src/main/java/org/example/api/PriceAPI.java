@@ -4,7 +4,6 @@ import org.example.application.usecase.createprice.CreatePriceCommand;
 import org.example.application.usecase.createprice.CreatePriceCommandHandler;
 import org.example.application.usecase.findpricecreated.FindPriceCreatedQuery;
 import org.example.application.usecase.findpricecreated.FindPriceCreatedQueryHandler;
-import org.example.application.usecase.findpricecreated.FoundPriceCreated;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
@@ -39,12 +38,12 @@ public class PriceAPI {
     }
 
     @GetMapping("")
-    ResponseEntity<List<FoundPriceCreated>> list(String productId, String brandId, @RequestParam(name = "applicationDate", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") Date applicationDate) {
+    ResponseEntity<List<PriceQueriedResponse>> list(String productId, String brandId, @RequestParam(name = "applicationDate", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") Date applicationDate) {
 
         FindPriceCreatedQuery query = new FindPriceCreatedQuery(productId, brandId, applicationDate);
 
         return ResponseEntity.ok(findPriceCreatedQueryHandler.handle(query).foundPriceCreatedList().stream()
-                .map(item -> new FoundPriceCreated(item.brandId(), item.startDate(), item.enDate(), item.priceList(), item.productId(), item.price()))
+                .map(item -> new PriceQueriedResponse(item.brandId(), item.startDate(), item.endDate(), item.priceList(), item.productId(), item.price() +item.curr()))
                 .collect(Collectors.toList()));
     }
 
