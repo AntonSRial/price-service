@@ -6,6 +6,7 @@ import org.example.application.usecase.findpricecreated.FindPriceCreatedQuery;
 import org.example.application.usecase.findpricecreated.FindPriceCreatedQueryHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +35,7 @@ public class PriceAPI {
         CreatePriceCommand createPriceCommand = new CreatePriceCommand(price.getBrandId(), price.getStartDate(), price.getEnDate(), price.getPriceList(), price.getProductId(), price.getPriority(), price.getPrice(), price.getCurr());
 
         createPriceCommandHandler.handle(createPriceCommand);
-        return ResponseEntity.ok(new PriceCreatedResponse(price.getBrandId(), price.getStartDate(), price.getEnDate(), price.getPriceList(), price.getProductId(), price.getPriority(), price.getPrice(), price.getCurr()));
+        return new ResponseEntity<>(new PriceCreatedResponse(price.getBrandId(), price.getStartDate(), price.getEnDate(), price.getPriceList(), price.getProductId(), price.getPriority(), price.getPrice(), price.getCurr()), HttpStatus.CREATED);
     }
 
     @GetMapping("")

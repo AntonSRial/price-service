@@ -2,7 +2,9 @@ package org.example;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.example.api.PriceRequest;
 import org.example.config.BeansConfig;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +14,12 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.context.annotation.Import;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
+import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -54,6 +59,20 @@ public class ApplicationIT {
       assertEquals(200, response.getStatusCodeValue());
 
   }
+    @Test
+    public void whenPostQueryIsExecuted_thenPriceIsCreated() throws Exception {
+        PriceRequest request = new PriceRequest("1", new Date(), new Date(),"1","11377",0,20.23,"EUR");
+        ResponseEntity<String> responsePost = restTemplate.postForEntity(LOCALHOST + port + API_PATH, new HttpEntity<>(request), String.class);
+
+        ResponseEntity<String> responseGet = restTemplate.getForEntity(LOCALHOST + port + API_PATH + "?productId=11377&brandId=1", String.class);
+        JsonNode root = mapper.readTree(responseGet.getBody());
+        String price = root.get(0).get("price").asText();
+
+        assertEquals("20.23EUR", price);
+        assertEquals(200, responseGet.getStatusCodeValue());
+        assertEquals(201, responsePost.getStatusCodeValue());
+
+    }
 
 
 }
