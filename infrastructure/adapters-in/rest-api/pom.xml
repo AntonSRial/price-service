@@ -47,10 +47,6 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-registry-prometheus</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
             <version>1.6.15</version>
@@ -79,11 +75,6 @@
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-processor</artifactId>
             <version>1.5.3.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>com.mapbox.mapboxsdk</groupId>
-            <artifactId>mapbox-sdk-geojson</artifactId>
-            <version>5.8.0</version>
         </dependency>
         <dependency>
             <groupId>org.example</groupId>

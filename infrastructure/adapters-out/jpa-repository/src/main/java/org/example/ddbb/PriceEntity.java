@@ -25,7 +25,7 @@ public class PriceEntity implements Serializable {
     private static final long serialVersionUID = 8953615786709346205L;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     @Column(name="BRAND_ID")
